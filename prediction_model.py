@@ -3,6 +3,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.model_selection import train_test_split
+import pickle as pkl
 
 
 troop_movements = pd.read_csv('troop_movements.csv')
@@ -31,3 +32,6 @@ sns.barplot(x='Feature', y='Importance', data=feature_importances)
 plt.xticks(rotation=90)
 plt.title('Feature Importances')
 plt.show()
+
+with open('trained_model.pkl', 'wb') as f:
+    pkl.dump(model, f)
